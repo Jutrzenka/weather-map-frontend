@@ -7,7 +7,7 @@ interface Props {
 export const PolandMap = ({children}:Props) => {
     return (
         <div className={"PolandMap"}>
-            <img className={"PolandMap_img"} src={"./poland.png"} alt={"Poland"}/>
+            <div className={"PolandMap_img"}/>
             <ul className={"PolandMap_ul"}>
                 {children}
             </ul>
