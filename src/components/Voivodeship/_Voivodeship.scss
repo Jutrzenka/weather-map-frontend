@@ -1,9 +1,19 @@
 .Voivodeship {
   list-style: none;
-  background-color: darkgreen;
+  background-color: #003d00;
 }
-.Voivodeship:hover {
-  background-color: orange;
+
+.Voivodeship-select {
+  list-style: none;
+  background-color: #4c7510;
+}
+
+.Voivodeship:hover, .Voivodeship-select:hover {
+  background-color: #8c590b;
+  height: 102%;
+  width: 102%;
+  left: -5px;
+  top: -5px;
 }
 
 .Voivodeship__span.visually-hidden {
