@@ -1,4 +1,12 @@
-main {
+@import "scss-global/variable";
+
+.Map {
   width: 500px;
-  height: 500px;
+  aspect-ratio: 1;
+  padding: 100px;
+  border: 5px solid $second-color;
+}
+
+body {
+  background-color: $base-color;
 }
