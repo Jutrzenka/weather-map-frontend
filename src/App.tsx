@@ -6,11 +6,30 @@ import {useFetch, } from './utils/useFetch';
 
 export const App = () => {
     const [voivodeship, setVoivodeship] = useState<string | null>(null);
-    const [fetchData, isLoaded] = useFetch(voivodeship);
+    const [isLoaded, fetchData] = useFetch(voivodeship);
 
-    let renderData = null;
-    if (voivodeship !== null) {
-        renderData = isLoaded ? [...fetchData.synopticData][0].city.toString() : "Ładowanie...";
+    let synopticData;
+    let info = null;
+    let hydroData;
+    if (fetchData !== null && isLoaded) {
+        info = <h3>Poziom wody:</h3>;
+        synopticData = [...fetchData.synopticData].map((value) =>
+            <li>
+                <h2>{value.city}</h2>
+                <p>{value.temp}</p>
+                <p>{value.atmosphericPressure}</p>
+                <p>{value.relativeHumidity}</p>
+                <p>{value.totalPrecipitation}</p>
+            </li>);
+        hydroData = [...fetchData.hydroData].map((value) =>
+            <li>
+                <p>{value.city} - {value.river} - {value.waterHeight}</p>
+            </li>
+        )
+    } else if (voivodeship !== null && !isLoaded) {
+        synopticData = "Ładowanie...";
+    } else {
+        synopticData = "Wybierz województwo";
     }
 
     return (
@@ -36,7 +55,9 @@ export const App = () => {
                     <Voivodeship voivodeship={"zachodniopomorskie"} isSelect={voivodeship} setSelect={setVoivodeship}/>
                 </PolandMap>
             </main>
-            <p>{renderData}</p>
+            <ul>{synopticData}</ul>
+            {info}
+            <ul>{hydroData}</ul>
     </div>
   );
 }
