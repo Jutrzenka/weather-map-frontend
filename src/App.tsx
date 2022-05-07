@@ -9,6 +9,7 @@ export const App = () => {
         <Header title={"Aplikacja pogodowa"}/>
         <PolandMap>
             <Voivodeship voivodeship={"mazowieckie"}/>
+            <Voivodeship voivodeship={"podlaskie"}/>
         </PolandMap>
     </div>
   );
