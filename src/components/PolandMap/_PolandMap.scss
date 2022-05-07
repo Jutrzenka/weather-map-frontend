@@ -1,0 +1,13 @@
+.PolandMap {
+  position: relative;
+  .PolandMap_img {
+    filter: invert(100%);
+  }
+  .PolandMap_ul {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+}
