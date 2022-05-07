@@ -1,19 +1,21 @@
+@import "src/scss-global/variable";
+
 .Voivodeship {
   list-style: none;
-  background-color: #003d00;
+  background-color: $first-color;
 }
 
 .Voivodeship-select {
   list-style: none;
-  background-color: #4c7510;
+  background-color: $third-color;
 }
 
 .Voivodeship:hover, .Voivodeship-select:hover {
-  background-color: #8c590b;
-  height: 102%;
-  width: 102%;
-  left: -5px;
-  top: -5px;
+  background-color: $second-color;
+  height: 103%;
+  width: 103%;
+  left: -1.5%;
+  top: -1.5%;
 }
 
 .Voivodeship__span.visually-hidden {

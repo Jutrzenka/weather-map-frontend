@@ -2,13 +2,21 @@ import React, {useState} from 'react';
 import {Header} from "./components/Header/Header";
 import {PolandMap,  } from './components/PolandMap/PolandMap';
 import {Voivodeship, } from "./components/Voivodeship/Voivodeship";
+import {useFetch, } from './utils/useFetch';
 
 export const App = () => {
-    const [voivodeship, setVoivodeship] = useState("");
+    const [voivodeship, setVoivodeship] = useState<string | null>(null);
+    const [fetchData, isLoaded] = useFetch(voivodeship);
+
+    let renderData = null;
+    if (voivodeship !== null) {
+        renderData = isLoaded ? [...fetchData.synopticData][0].city.toString() : "Ładowanie...";
+    }
+
     return (
         <div className="App">
             <Header title={"Aplikacja pogodowa"}/>
-            <main>
+            <main className={"Map"}>
                 <PolandMap>
                     <Voivodeship voivodeship={"dolnoslaskie"} isSelect={voivodeship} setSelect={setVoivodeship}/>
                     <Voivodeship voivodeship={"kujawsko-pomorskie"} isSelect={voivodeship} setSelect={setVoivodeship}/>
@@ -28,7 +36,7 @@ export const App = () => {
                     <Voivodeship voivodeship={"zachodniopomorskie"} isSelect={voivodeship} setSelect={setVoivodeship}/>
                 </PolandMap>
             </main>
-        <p>{voivodeship}</p>
+            <p>{renderData}</p>
     </div>
   );
 }
