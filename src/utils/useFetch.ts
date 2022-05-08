@@ -16,6 +16,7 @@ interface SynopticData {
 
 interface CompleteData {
     error: boolean;
+    name: string;
     hydroData: HydroData[];
     synopticData: SynopticData[];
 }
