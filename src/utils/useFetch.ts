@@ -1,12 +1,12 @@
 import {useEffect, useState} from "react";
 
-interface HydroData {
+export interface HydroData {
     city: string;
     river: string;
     waterHeight: string;
 }
 
-interface SynopticData {
+export interface SynopticData {
     city: string;
     temp: string;
     relativeHumidity: string;
@@ -16,18 +16,20 @@ interface SynopticData {
 
 interface CompleteData {
     error: boolean;
+    nameVoivodeship: string;
     hydroData: HydroData[];
     synopticData: SynopticData[];
 }
 
-type Data = CompleteData | null;
+export type Data = CompleteData | null;
+export type ClearData = CompleteData;
 
 export const useFetch = (endpoint:string | null):[boolean, Data] => {
     const [data, setData] = useState<Data | null>(null);
-    const [isLoaded, setIsLoaded] = useState<boolean>(false);
+    const [isLoaded, setIsLoaded] = useState<boolean>(true);
     useEffect(() => {
-        setIsLoaded(false);
         if (endpoint !== null) {
+            setIsLoaded(false);
             (async () => {
                 const endpointString =`${endpoint}`.toLowerCase().slice(0,4);
                 const response = await fetch(`http://localhost:3001/data/${endpointString}`);

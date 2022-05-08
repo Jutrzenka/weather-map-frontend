@@ -1,0 +1,41 @@
+@import "src/scss-global/variable";
+
+.CityData {
+  min-width: $min-width-standard;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: calc(15px + 1vh + 1vw);
+  .CityData_city {
+    margin: 10px 10%;
+  }
+}
+
+.CityData_select {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  .CityData__city {
+    width: 80%;
+    min-height: 50px;
+    background-color: $second-color;
+    border: none;
+    margin: 5px;
+    transition: 0.3s;
+    .CityData___p {
+      font-size: 1.25em;
+      color: $base-color;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+  }
+
+  .CityData__city:hover {
+    background-color: $third-color;
+  }
+}
+
+.CityData__city.select-city {
+  background-color: $first-color;
+}

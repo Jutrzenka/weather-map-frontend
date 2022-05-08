@@ -1,0 +1,10 @@
+@import "src/scss-global/variable";
+
+.Map {
+  aspect-ratio: 1;
+  width: 30%;
+  box-sizing: border-box;
+  min-width: $min-width-standard;
+  min-height: $min-width-standard;
+  padding: 15px;
+}
