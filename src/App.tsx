@@ -1,32 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Header} from "./components/Header/Header";
-import {PolandMap,  } from './components/PolandMap/PolandMap';
-import {Voivodeship, } from "./components/Voivodeship/Voivodeship";
+import {useFetch, } from './utils/useFetch';
+import {Map} from "./components/Map/Map";
+import { Separator } from './components/Separator/Separator';
+import { CityMain } from './components/CityMain/CityMain';
+import {ButtonLink} from "./components/ButtonLink/ButtonLink";
 
 export const App = () => {
-  return (
-    <div className="App">
-        <Header title={"Aplikacja pogodowa"}/>
-        <main>
-            <PolandMap>
-                <Voivodeship voivodeship={"dolnoslaskie"}/>
-                <Voivodeship voivodeship={"kujawsko-pomorskie"}/>
-                <Voivodeship voivodeship={"lubelskie"}/>
-                <Voivodeship voivodeship={"lubuskie"}/>
-                <Voivodeship voivodeship={"lodzkie"}/>
-                <Voivodeship voivodeship={"malopolskie"}/>
-                <Voivodeship voivodeship={"mazowieckie"}/>
-                <Voivodeship voivodeship={"opolskie"}/>
-                <Voivodeship voivodeship={"podkarpackie"}/>
-                <Voivodeship voivodeship={"podlaskie"}/>
-                <Voivodeship voivodeship={"pomorskie"}/>
-                <Voivodeship voivodeship={"slaskie"}/>
-                <Voivodeship voivodeship={"swietokrzyskie"}/>
-                <Voivodeship voivodeship={"warminsko-mazurskie"}/>
-                <Voivodeship voivodeship={"wielkopolskie"}/>
-                <Voivodeship voivodeship={"zachodniopomorskie"}/>
-            </PolandMap>
-        </main>
-    </div>
-  );
-}
+    const [voivodeship, setVoivodeship] = useState<string | null>(null);
+    const [isLoaded, fetchData] = useFetch(voivodeship);
+
+    return (
+        <div className="App">
+            <main className={"App_main"}>
+                <Header title={"Aplikacja pogodowa"}/>
+                <Separator/>
+                <div className={"App__info"}>
+                    <Map voivodeship={voivodeship} setVoivodeship={setVoivodeship}/>
+                    <CityMain isLoaded={isLoaded} cityData={fetchData}/>
+                </div>
+                <Separator/>
+                <ButtonLink href={"https://danepubliczne.imgw.pl"} text={"link do źródła danych"}/>
+            </main>
+        </div>
+    );
+};

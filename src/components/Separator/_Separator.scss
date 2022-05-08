@@ -1,0 +1,12 @@
+@import "src/scss-global/variable";
+
+.Separator {
+  box-sizing: border-box;
+  height: 0.5vh;
+  min-height: 5px;
+  width: 95%;
+  min-width: $min-width-standard;
+  margin: 0.5vh auto;
+  background-color: $second-color;
+  border-radius: 2px;
+}
