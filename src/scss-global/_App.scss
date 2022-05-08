@@ -1,0 +1,18 @@
+@import "variable";
+
+.App {
+  background-color: $base-color;
+  min-width: $min-width-standard;
+  width: 100%;
+  height: 100%;
+
+  .App__info {
+    width: 100%;
+    min-height: 30vh;
+    min-width: $min-width-standard;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
