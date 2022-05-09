@@ -1,0 +1,16 @@
+@import "src/scss-global/variable";
+
+.ButtonLink {
+  width: 100%;
+  background-color: $third-color;
+  text-align: center;
+  .ButtonLink_Link {
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color: $base-color;
+  }
+  .ButtonLink_Link:first-letter {
+    text-transform: uppercase;
+  }
+}

@@ -15,4 +15,11 @@
     flex-wrap: wrap;
     gap: 10px;
   }
+  .App_hydro {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+  }
 }
