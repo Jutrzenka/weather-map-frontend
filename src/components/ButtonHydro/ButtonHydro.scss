@@ -1,0 +1,22 @@
+@import "src/scss-global/variable";
+
+.ButtonHydro {
+  min-width: $min-width-standard;
+  display: block;
+  font-size: 1em;
+  width: 100%;
+  background-color: $third-color;
+  text-align: center;
+  border: none;
+  .ButtonHydro_p {
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color: $base-color;
+    font-family: "Oswald", sans-serif;
+    font-size: 25px;
+  }
+  .ButtonHydro_p:first-letter {
+    text-transform: uppercase;
+  }
+}

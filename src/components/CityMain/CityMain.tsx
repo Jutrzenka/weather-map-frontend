@@ -5,9 +5,19 @@ import {CityData} from "../CityData/CityData";
 interface Props {
     cityData: Data;
     isLoaded: boolean;
+    isError: boolean;
 }
 
-export const CityMain = ({cityData, isLoaded}:Props) => {
+export const CityMain = ({cityData, isLoaded, isError}:Props) => {
+    if (isError) {
+        return (
+            <article className={"CityMain"}>
+                <p className={"Loading"}>Wystąpił błąd</p>
+                <p className={"Loading"}>Przepraszamy</p>
+                <p className={"Loading"}>Spróbuj ponownie później</p>
+            </article>
+        )
+    }
     if (isLoaded) {
         if (cityData !== null) {
             return (
