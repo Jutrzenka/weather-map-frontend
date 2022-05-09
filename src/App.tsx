@@ -5,6 +5,7 @@ import {Map} from "./components/Map/Map";
 import { Separator } from './components/Separator/Separator';
 import { CityMain } from './components/CityMain/CityMain';
 import {ButtonLink} from "./components/ButtonLink/ButtonLink";
+import { Hydro } from './components/Hydro/Hydro';
 
 export const App = () => {
     const [voivodeship, setVoivodeship] = useState<string | null>(null);
@@ -19,9 +20,9 @@ export const App = () => {
                     <Map voivodeship={voivodeship} setVoivodeship={setVoivodeship}/>
                     <CityMain isLoaded={isLoaded} cityData={fetchData}/>
                 </div>
-                <Separator/>
-                <ButtonLink href={"https://danepubliczne.imgw.pl"} text={"link do źródła danych"}/>
             </main>
+            {fetchData !== null ? <Hydro data={fetchData}/> : null}
+            <ButtonLink href={"https://danepubliczne.imgw.pl"} title={"Kliknij tu, aby odwiedzić stronę danepubliczne.imgw.pl"}/>
         </div>
     );
 };

@@ -2,13 +2,13 @@ import React from "react";
 
 interface Props {
     href: string;
-    text: string;
+    title: string;
 }
 
-export const ButtonLink = ({href, text}:Props) => {
+export const ButtonLink = ({href, title}:Props) => {
     return (
         <div className={"ButtonLink"}>
-            <a href={href}>{text}</a>
+            <a className={"ButtonLink_Link"} href={href}>{title}</a>
         </div>
     )
 }

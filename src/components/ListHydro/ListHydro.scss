@@ -1,0 +1,29 @@
+@import "src/scss-global/variable";
+
+.ListHydro {
+  width: 100%;
+  min-width: $min-width-standard;
+  display: flex;
+  flex-wrap: wrap;
+  .ListHydro_Tile {
+    width: 33.33%;
+    min-height: 50px;
+    text-align: center;
+    background-color: $first-color;
+    color: $base-color;
+    font-size: 0.6em;
+
+    p {
+      font-weight: 300;
+      letter-spacing: 1px;
+      span {
+        font-weight: 500;
+        font-size: 1.1em;
+      }
+    }
+  }
+  .ListHydro_Tile:nth-child(2n) {
+    background-color: $second-color;
+    color: $base-color;
+  }
+}
