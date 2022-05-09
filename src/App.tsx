@@ -9,7 +9,7 @@ import { Hydro } from './components/Hydro/Hydro';
 
 export const App = () => {
     const [voivodeship, setVoivodeship] = useState<string | null>(null);
-    const [isLoaded, fetchData] = useFetch(voivodeship);
+    const [isError, isLoaded, fetchData] = useFetch(voivodeship);
 
     return (
         <div className="App">
@@ -18,7 +18,7 @@ export const App = () => {
                 <Separator/>
                 <div className={"App__info"}>
                     <Map voivodeship={voivodeship} setVoivodeship={setVoivodeship}/>
-                    <CityMain isLoaded={isLoaded} cityData={fetchData}/>
+                    <CityMain isError={isError} isLoaded={isLoaded} cityData={fetchData}/>
                 </div>
             </main>
             {fetchData !== null ? <Hydro data={fetchData}/> : null}

@@ -24,20 +24,26 @@ interface CompleteData {
 export type Data = CompleteData | null;
 export type ClearData = CompleteData;
 
-export const useFetch = (endpoint:string | null):[boolean, Data] => {
+export const useFetch = (endpoint:string | null):[boolean, boolean, Data] => {
     const [data, setData] = useState<Data | null>(null);
     const [isLoaded, setIsLoaded] = useState<boolean>(true);
-    useEffect(() => {
-        if (endpoint !== null) {
-            setIsLoaded(false);
-            (async () => {
-                const endpointString =`${endpoint}`.toLowerCase().slice(0,4);
-                const response = await fetch(`http://localhost:3001/data/${endpointString}`);
-                const data = (await response.json()) as Data;
-                setData(data);
-                setIsLoaded(true);
-            })();
-        }
-    }, [endpoint]);
-    return [isLoaded, data]
+    const [isError, setIsError] = useState<boolean>(false);
+        useEffect(() => {
+            if (endpoint !== null) {
+                setIsLoaded(false);
+                (async () => {
+                    try {
+                        const endpointString =`${endpoint}`.toLowerCase().slice(0,4);
+                        const response = await fetch(`/data/${endpointString}`);
+                        const data = (await response.json()) as Data;
+                        setData(data);
+                        setIsError(false);
+                        setIsLoaded(true);
+                    } catch (err) {
+                        setIsError(true);
+                    }
+                })();
+            }
+        }, [endpoint]);
+        return [isError, isLoaded, data]
 }
